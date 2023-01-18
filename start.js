@@ -78,9 +78,24 @@ function getData(){
    .catch(err => console.error(err))
 }
 
-// CUSTOM HEADERS
+// CUSTOM HEADERS- have to do this with tokens, like json tokens
 function customHeaders() {
-  console.log('Custom Headers');
+  const config = {
+    headers: {
+      'Content-Type':'application/json'
+      Authorization: 'sometoken'
+    }
+  }
+  function addTodo(){
+    axios('zillow-com1.p.rapidapi.com',{
+      title:'New Todo',
+      completed:false
+      },
+      config
+      )
+     .then(res => showOutput(res))
+     .catch(err => console.error(err));
+  }
 }
 
 // TRANSFORMING REQUESTS & RESPONSES
