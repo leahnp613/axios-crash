@@ -48,7 +48,7 @@ function addTodo(){
 function updateTodo() {
   axios
   .put('zillow-com1.p.rapidapi.com',{ //if you use a PATCH request instead it will just change what is specified and not the whole resource//
-    title:'Updated TOdo',//here you'll put in the parameter that you want to add//
+    title:'Updated Todo',//here you'll put in the parameter that you want to add//
     completed:true
     })
    .then(res => showOutput(res))
@@ -65,9 +65,17 @@ function removeTodo() {
   }
 }
 
-// SIMULTANEOUS DATA
-function getData() {
-  console.log('Simultaneous Request');
+// SIMULTANEOUS DATA- axios.all will take in an array of requests and when all of the promises are fulfilled we will get our response//
+function getData(){ 
+  axios.all([
+    axios.get('zillow-com1.p.rapidapi.com/todos_limit=5'),
+    axios.get('zillow-com1.p.rapidapi.com/posts_limit=5')
+  ])
+   .then(res => {
+    console.log(res[0]);
+    console.log(res[1]);
+    showOutput(res[1]))
+   .catch(err => console.error(err))
 }
 
 // CUSTOM HEADERS
@@ -91,7 +99,13 @@ function cancelToken() {
 }
 
 // INTERCEPTING REQUESTS & RESPONSES
+axios.interceptors.request.use(config =>{
+  console.log(`${config.method.toUpperCase()} request send to ${config.url} at ${new Date ().getTime()}`)
 
+  return config
+},  error => {
+    return Promise.reject(error)
+});
 // AXIOS INSTANCES
 
 // Show output in browser
