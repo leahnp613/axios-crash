@@ -171,7 +171,11 @@ axios.interceptors.request.use(config =>{
     return Promise.reject(error)
 });
 // AXIOS INSTANCES
+const axiosInstance = axios.create({
+ baseURL: 'zillow-com1.p.rapidapi.com'
+});
 
+axiosInstance.get('/comments').then(res => showOutput)
 // Show output in browser
 function showOutput(res) {
   document.getElementById('res').innerHTML = `
