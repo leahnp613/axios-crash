@@ -98,9 +98,22 @@ function customHeaders() {
   }
 }
 
-// TRANSFORMING REQUESTS & RESPONSES
+// TRANSFORMING REQUESTS & RESPONSES- can transform your reponse or requests in certain ways
+
 function transformResponse() {
-  console.log('Transform Response');
+  const options = {
+   method:'post'
+   url:'zillow-com1.p.rapidapi.com',
+   data:{
+    title:'Hello World'
+   },
+   transformResponse:axios.defaults.transformResponse.concat(data => {
+    data.title = data.title.toUpperCase();
+    return data;
+   })
+  }
+   axios(options).then(res => showOutput(res))
+
 }
 
 // ERROR HANDLING
