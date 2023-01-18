@@ -1,6 +1,9 @@
 // GET REQUEST
 function getTodos() {
-  console.log('GET Request');
+  axios({
+    method: 'get'
+    url:''//this is where you put the url for the api//
+  })
 }
 
 // POST REQUEST
