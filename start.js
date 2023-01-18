@@ -124,9 +124,17 @@ function transformResponse() {
 
 }
 
-// ERROR HANDLING
+// ERROR HANDLING- 
 function errorHandling() {
-  console.log('Error Handling');
+  axios.get( 'zillow-com1.p.rapidapi.com')      //you can add a method to axios with a dot, you don't have to add.get for the get request but it is cleaner to do so//
+    .then(res => showOutput(res))
+    .catch(err => {
+      if(error.response)
+      //server responseded with a status other than the 200 range//
+      console.log(err.response.data);
+      console.log(err.response.status);
+      console.log(err.response.headers);
+    }
 }
 
 // CANCEL TOKEN
