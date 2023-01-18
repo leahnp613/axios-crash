@@ -34,21 +34,35 @@ axios.get( 'zillow-com1.p.rapidapi.com?_limit=5')      //you can add a method to
 //     }//res.data is always going to be the data that is returned//
 
 function addTodo(){
-  axios('zillow-com1.p.rapidapi.com')
+  axios('zillow-com1.p.rapidapi.com',{
+    title:'New Todo',
+    completed:false
+    })
    .then(res => showOutput(res))
    .catch(err => console.error(err));
 }
 
 
 
-// PUT/PATCH REQUEST
+// PUT/PATCH REQUEST- PUT is meant to replace the entire resource, PATCH will update it incrementally
 function updateTodo() {
-  console.log('PUT/PATCH Request');
+  axios
+  .put('zillow-com1.p.rapidapi.com',{ //if you use a PATCH request instead it will just change what is specified and not the whole resource//
+    title:'Updated TOdo',//here you'll put in the parameter that you want to add//
+    completed:true
+    })
+   .then(res => showOutput(res))
+   .catch(err => console.error(err));
 }
 
-// DELETE REQUEST
+// DELETE REQUEST-  
 function removeTodo() {
-  console.log('DELETE Request');
+  function updateTodo() {
+    axios
+    .delete('zillow-com1.p.rapidapi.com/todo/1',{ //if you use a PATCH request instead it will just change what is specified and not the whole resource//
+     .then(res => showOutput(res))//don't need to pass any data in because we're just deleting it//
+     .catch(err => console.error(err));
+  }
 }
 
 // SIMULTANEOUS DATA
