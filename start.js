@@ -1,10 +1,22 @@
 // GET REQUEST
-function getTodos() {
-  axios({
-    method: 'get'
-    url:''//this is where you put the url for the api//
-  })
-}
+// function getTodos() {
+//   axios({
+//     method: 'get'
+//     url:'zillow-com1.p.rapidapi.com'//this is where you put the url for the api, this returns a promise//
+//     params: {
+//       _limit:5
+//     }
+  
+//   })
+//   .then (res => showOutput(res));         //res is response, for error handling with promises you can add catch//
+//     .catch (err => console.error(err));
+// }//res.data is always going to be the data that is returned//
+axios.get( 'zillow-com1.p.rapidapi.com?_limit=5')      //you can add a method to axios with a dot, you don't have to add.get for the get request but it is cleaner to do so//
+    .then(res => showOutput(res))
+    .catch(err => console.error(err));
+
+
+
 
 // POST REQUEST
 function addTodo() {
