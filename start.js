@@ -138,13 +138,29 @@ function errorHandling() {
       if(err.response.status===404){
         alert('Error, Page Not Found')
       }
+    }else if(err.request){
+      //Request was made but no response
+      console.error(err.request);
     }
 }
 
 // CANCEL TOKEN
 function cancelToken() {
-  console.log('Cancel Token');
-}
+ const source = axios.CancelToken.source();
+ 
+  axios
+  .get( 'zillow-com1.p.rapidapi.com'{ , //you can add a method to axios with a dot, you don't have to add.get for the get request but it is cleaner to do so//
+    cancelToken:source.token
+})
+    .then(res => showOutput(res))
+    .catch(thrown =>
+      if (axios.isCancel(thrown)){
+        console.log('Request Canceled', thrown.message);
+      }
+});
+ if (true) {
+  source.cancel('Request canceled!');
+ }
 
 // INTERCEPTING REQUESTS & RESPONSES
 axios.interceptors.request.use(config =>{
