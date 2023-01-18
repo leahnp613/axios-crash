@@ -1,3 +1,11 @@
+// Globals- with globals you can send a header value with every request, this comes in handy with tokens and authentication
+axios.defaults.headers.common['X-Auth-Token'] = 'sometoken'
+//token will appear in the config after any request//
+
+
+
+
+
 // GET REQUEST-1st method is the long form, second method is shorthand
 // function getTodos() {
 //   axios({
