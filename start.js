@@ -19,7 +19,7 @@ axios.defaults.headers.common['X-Auth-Token'] = 'sometoken'
 //   .then (res => showOutput(res));         //res is response, for error handling with promises you can add catch//
 //     .catch (err => console.error(err));
 // }//res.data is always going to be the data that is returned//
-axios.get( 'zillow-com1.p.rapidapi.com?_limit=5')      //you can add a method to axios with a dot, you don't have to add.get for the get request but it is cleaner to do so//
+axios.get( 'zillow-com1.p.rapidapi.com?_limit=5', {timeout:5})      //you can add a method to axios with a dot, you don't have to add.get for the get request but it is cleaner to do so//
     .then(res => showOutput(res))
     .catch(err => console.error(err));
 
@@ -170,7 +170,7 @@ axios.interceptors.request.use(config =>{
 },  error => {
     return Promise.reject(error)
 });
-// AXIOS INSTANCES
+// AXIOS INSTANCES- before we were talking about axios as an object
 const axiosInstance = axios.create({
  baseURL: 'zillow-com1.p.rapidapi.com'
 });
