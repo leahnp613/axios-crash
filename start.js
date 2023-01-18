@@ -1,4 +1,4 @@
-// GET REQUEST
+// GET REQUEST-1st method is the long form, second method is shorthand
 // function getTodos() {
 //   axios({
 //     method: 'get'
@@ -18,21 +18,28 @@ axios.get( 'zillow-com1.p.rapidapi.com?_limit=5')      //you can add a method to
 
 
 
-// POST REQUEST
-function addTodo() {
-  function getTodos() {
-      axios({
-        method: 'get'
-        url:'zillow-com1.p.rapidapi.com'//this is where you put the url for the api, this returns a promise//
-        data: {
-          title:'New Todo',
-          completed:false
-        }
-      
-      })
-      .then (res => showOutput(res));         //res is response, for error handling with promises you can add catch//
-        .catch (err => console.error(err));
-    }//res.data is always going to be the data that is returned//
+// POST REQUEST- 1st method is the long form, second method is shorthand
+// function addTodo() {
+//   function getTodos() {
+//       axios({
+//         method: 'get'
+//         url:'zillow-com1.p.rapidapi.com'//this is where you put the url for the api, this returns a promise//
+//         data: {
+//           title:'New Todo',
+//           completed:false
+//         }
+//       })
+//       .then (res => showOutput(res));         //res is response, for error handling with promises you can add catch//
+//         .catch (err => console.error(err));
+//     }//res.data is always going to be the data that is returned//
+
+function addTodo(){
+  axios('zillow-com1.p.rapidapi.com')
+   .then(res => showOutput(res))
+   .catch(err => console.error(err));
+}
+
+
 
 // PUT/PATCH REQUEST
 function updateTodo() {
